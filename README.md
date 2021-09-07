@@ -25,7 +25,7 @@ opencv-python==4.4.0.44
 
 開啟無人機電源(左側按紐)並連接到wifi
 
-![](https://user-images.githubusercontent.com/13486777/110932822-a7b30f00-8334-11eb-9759-864c3dce652d.png =300x)
+<img width="346" alt="wifi_connection" src="https://user-images.githubusercontent.com/13486777/110932822-a7b30f00-8334-11eb-9759-864c3dce652d.png">
 
 ## 基本功能
 1. 起飛降落

@@ -39,7 +39,7 @@ opencv-python==4.4.0.44
     print(mydrone.get_battery()) # 顯示電量
 
     mydrone.takeoff() # 起飛
-    mydrone.move_frward(30) # 前進30cm
+    mydrone.move_forward(30) # 前進30cm
     sleep(2) 
     mydrone.land() # 降落
     ```

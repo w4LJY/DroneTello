@@ -32,7 +32,6 @@ opencv-python==4.4.0.44
     
     ```python
     from djitellopy.tello import Tello
-    from time import sleep
 
     mydrone = Tello()
     mydrone.connect() # 連線
@@ -40,7 +39,7 @@ opencv-python==4.4.0.44
 
     mydrone.takeoff() # 起飛
     mydrone.move_forward(30) # 前進30cm
-    sleep(2) 
+    mydrone.rotate_counter_clockwise(90)
     mydrone.land() # 降落
     ```
 

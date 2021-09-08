@@ -14,23 +14,21 @@ def getKeyboardInput():
         elif keyboard.is_pressed("RIGHT"): lr= speed
         
         # 前後
-        if keyboard.is_pressed("UP"): fb=-speed
-        elif keyboard.is_pressed("DOWN"): fb= speed
+        if keyboard.is_pressed("UP"): fb= speed
+        elif keyboard.is_pressed("DOWN"): fb=-speed
         
         # 上下
-        if keyboard.is_pressed("w"): ud=-speed
-        elif keyboard.is_pressed("s"): ud= speed
+        if keyboard.is_pressed("w"): ud= speed
+        elif keyboard.is_pressed("s"): ud=-speed
         
         # 旋轉
         if keyboard.is_pressed("a"): yv=-speed
         elif keyboard.is_pressed("d"): yv= speed
         
-        if keyboard.is_pressed("p"): print("時間暫停3s"); time.sleep(3)
-        
-        # 起飛
+        # 降落
         if keyboard.is_pressed("q"): mydrone.land(); time.sleep(3) 
         
-        # 降落
+        # 起飛
         if keyboard.is_pressed("e"): mydrone.takeoff(); 
         
         time.sleep(0.05)

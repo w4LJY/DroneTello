@@ -12,9 +12,7 @@ class TelloDrone(Tello):
         self.connect()
         print("battery: ",self.get_battery())
         
-        
         # keyboard control
-        self.speed = 50
         self.control_speed = [0,0,0,0] 
         self.keyboard_thread = Thread(target=self.getKeyboardInput)
         self.keyboard_thread.start()
@@ -51,10 +49,10 @@ class TelloDrone(Tello):
             if keyboard.is_pressed("a"): self.control_speed[3]=-speed
             elif keyboard.is_pressed("d"): self.control_speed[3]= speed
             
-            # 起飛
+            # 降落
             if keyboard.is_pressed("q"): self.land(); time.sleep(3) 
             
-            # 降落
+            # 起飛
             if keyboard.is_pressed("e"): self.takeoff()
             
             # flip 
@@ -62,8 +60,6 @@ class TelloDrone(Tello):
             elif keyboard.is_pressed("l"): self.flip_right(); time.sleep(1)
             elif keyboard.is_pressed("i"): self.flip_forward(); time.sleep(1)
             elif keyboard.is_pressed("k"): self.flip_back(); time.sleep(1)
-            
-            
             
             time.sleep(0.05) 
         
@@ -81,8 +77,6 @@ class TelloDrone(Tello):
             
             # fly keyboard control
             self.send_rc_control(self.control_speed[0],self.control_speed[1],self.control_speed[2],self.control_speed[3])
-            print(self.control_speed)
-            self.drone_info()
             
             # fps
             cTime = time.time()
@@ -101,5 +95,3 @@ class TelloDrone(Tello):
         
 if __name__ == '__main__':
     TelloDrone()
-    
-    

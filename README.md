@@ -29,6 +29,8 @@ opencv-python==4.4.0.44
 
 ## 基本功能
 1. 起飛降落
+
+    起飛後需要等一段時間，無人機才能移動
     
     ```python
     from djitellopy.tello import Tello

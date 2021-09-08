@@ -14,10 +14,11 @@
 ## 設置
 1. 安裝
 ```
+djitellopy==2.4.0
+opencv-python==4.4.0.44
+keyboard==0.13.5
 mediapipe==0.8.7.1
 cvzone==1.4.1
-keyboard==0.13.5
-opencv-python==4.4.0.44
 ```
 其中cvzone版本需要正確，1.5後的版本經過改動
 

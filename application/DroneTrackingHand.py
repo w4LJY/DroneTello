@@ -54,9 +54,7 @@ class TelloDrone(Tello):
         self.connect()
         print("battery: ",self.get_battery())
         
-        
         # keyboard control
-        self.speed = 50
         self.control_speed = [0,0,0,0] 
         self.keyboard_thread = Thread(target=self.getKeyboardInput)
         self.keyboard_thread.start()
@@ -174,5 +172,4 @@ class TelloDrone(Tello):
         
 if __name__ == '__main__':
     TelloDrone()
-    
     

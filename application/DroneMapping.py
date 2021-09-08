@@ -12,17 +12,15 @@ class TelloDrone(Tello):
         Tello.__init__(self)
         self.connect()
         print("battery: ",self.get_battery())
-        
-        
+              
         # keyboard control
         self.speed = 50
-        self.control_speed = [0,0,0,0] # 左右前後上下旋轉的速度
+        self.control_speed = [0,0,0,0] 
         self.keyboard_thread = Thread(target=self.getKeyboardInput)
         self.keyboard_thread.start()
         
-        
         # mapping
-        fSpeed = 200/10 # forward speed in cm/s
+        fSpeed = 250/10 
         aSpeed = 360/10
         self.interval = 0.25
         
@@ -34,7 +32,7 @@ class TelloDrone(Tello):
         self.points = [] # 儲存走過的路徑
         
         # drone video
-        self.streamon() # 開始接收無人機影像
+        self.streamon() 
         self.cap = self.get_frame_read()
         self.drone_frame()
         
@@ -74,10 +72,10 @@ class TelloDrone(Tello):
             # 旋轉
             if keyboard.is_pressed("a"): 
                 self.control_speed[3]=-speed
-                self.yaw += self.aInterval
+                self.yaw -= self.aInterval
             elif keyboard.is_pressed("d"): 
                 self.control_speed[3]= speed
-                self.yaw -= self.aInterval
+                self.yaw += self.aInterval
             
             # 降落
             if keyboard.is_pressed("q"): 
@@ -109,9 +107,9 @@ class TelloDrone(Tello):
     def drawPoints(self,img):
         self.points.append([self.map_x,self.map_y])
         for point in self.points:
-            cv2.circle(img,point, 4, (0,0,255),cv2.FILLED)
+            cv2.circle(img,point, 5, (0,0,255),cv2.FILLED)
             
-        cv2.circle(img,self.points[-1], 5, (0,255,0),cv2.FILLED)
+        cv2.circle(img,self.points[-1], 6, (0,255,0),cv2.FILLED)
         
     def drone_frame(self):
         pTime = 0
@@ -144,5 +142,4 @@ class TelloDrone(Tello):
         
 if __name__ == '__main__':
     TelloDrone()
-    
     

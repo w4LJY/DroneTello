@@ -11,19 +11,15 @@ class TelloDrone(Tello):
         self.connect()
         print("battery: ",self.get_battery())
         
-        
         # keyboard control
-        self.speed = 50
         self.control_speed = [0,0,0,0] 
-        self.keyboard_thread = Thread(target=self.getKeyboardInput)
-        self.keyboard_thread.start()
+        self.keyboard_thread = Thread(target=self.getKeyboardInput).start()
         
         # drone video
         self.streamon() 
         self.cap = self.get_frame_read()
         self.drone_frame()
         
-
     def getKeyboardInput(self):
 
         while True:
@@ -45,10 +41,10 @@ class TelloDrone(Tello):
             if keyboard.is_pressed("a"): self.control_speed[3]=-speed
             elif keyboard.is_pressed("d"): self.control_speed[3]= speed
             
-            # 起飛
+            # 降落
             if keyboard.is_pressed("q"): self.land(); time.sleep(3) 
             
-            # 降落
+            # 起飛
             if keyboard.is_pressed("e"): self.takeoff()
             
             # flip 
@@ -89,5 +85,3 @@ class TelloDrone(Tello):
         
 if __name__ == '__main__':
     TelloDrone()
-    
-    

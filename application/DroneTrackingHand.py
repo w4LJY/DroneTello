@@ -131,10 +131,7 @@ class TelloDrone(Tello):
         while True:
             img = self.cap.frame
             h, w, _ = img.shape
-            
-            # fly keyboard control
-            self.send_rc_control(self.control_speed[0],self.control_speed[1],self.control_speed[2],self.control_speed[3])
-            
+      
             # hand detect
             img = self.detector.findHands(img)
             lmList, hand = self.detector.findPosition(img) 
@@ -142,7 +139,6 @@ class TelloDrone(Tello):
             if lmList:
                 bbox = hand['bbox'] 
                 cv2.circle(img, lmList[9], 15, (0, 255, 0), cv2.FILLED)
-                cv2.rectangle(img, (bbox[0],bbox[1]), (bbox[0]+bbox[2],bbox[1]+bbox[3]), (255, 0, 0), 2)
                 
                 # PID control
                 yv_speed = self.rotate_pid.PID(w//2, lmList[9][0])
@@ -154,6 +150,9 @@ class TelloDrone(Tello):
                 self.control_speed[1] = 0
                 self.control_speed[2] = 0
                 self.control_speed[3] = 0
+            
+            # fly keyboard control
+            self.send_rc_control(self.control_speed[0],self.control_speed[1],self.control_speed[2],self.control_speed[3])
             
             # fps
             cTime = time.time()

@@ -39,7 +39,7 @@ opencv-python==4.4.0.44
 
     mydrone.takeoff() # 起飛
     mydrone.move_forward(30) # 前進30cm
-    mydrone.rotate_counter_clockwise(90)
+    mydrone.rotate_counter_clockwise(90) # 逆時鐘旋轉90度
     mydrone.land() # 降落
     ```
 
